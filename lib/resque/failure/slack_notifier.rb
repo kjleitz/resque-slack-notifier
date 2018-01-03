@@ -1,5 +1,6 @@
 require 'yaml'
 require 'slack-notifier'
+require 'pry-remote'
 
 module Resque
   module Failure
@@ -21,6 +22,8 @@ module Resque
           self.client = Slack::Notifier.new config[:webhook_url],
             channel:  config[:channel],
             username: config[:display_name]
+
+          binding.pry_remote
         end
 
         def config_path=(path)
