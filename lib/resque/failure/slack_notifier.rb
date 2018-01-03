@@ -17,7 +17,7 @@ module Resque
           valid_keys      = %i(webhook_url channel display_name notify_channel)
           config_options  = options.select { |key| valid_keys.include? key }
 
-          self.config = DEFAULT_CONFIG_OPTIONS.merge valid_options
+          self.config = DEFAULT_CONFIG_OPTIONS.merge config_options
           self.client = Slack::Notifier.new config[:webhook_url],
             channel:  config[:channel],
             username: config[:display_name]
