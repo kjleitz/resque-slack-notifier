@@ -16,17 +16,17 @@ module Resque
         def configure(**options)
           valid_keys      = %i(webhook_url channel display_name notify_channel)
           config_options  = options.select { |key| valid_keys.include? key }
-          
+
           self.config = DEFAULT_CONFIG_OPTIONS.merge valid_options
           self.client = Slack::Notifier.new config[:webhook_url],
             channel:  config[:channel],
             username: config[:display_name]
         end
-  
+
         def config_path=(path)
           configure YAML.load_file(path).symbolize_keys
         end
-  
+
         def count
           Stat[:failed]
         end
