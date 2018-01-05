@@ -14,8 +14,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/kjleitz/resque_slack_notifier"
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0")
-  spec.require_paths = ["lib"]
+  spec.files         = Dir["{lib}/**/*"] + ["LICENSE", "Gemfile", "README.md"]
 
   spec.add_dependency "slack-notifier", "~> 1.5"
 
